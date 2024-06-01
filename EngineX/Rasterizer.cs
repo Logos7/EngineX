@@ -83,14 +83,28 @@
             // seba
         }
 
-        public void WiredEllipse(int x, int y, int r1, int r2)
+        public void WiredEllipse(int x, int y, int r1, int r2, Color c)
         {
-            // dom
+            for (int x1 = 0; x1 < b.Width; x1++)
+            {
+                for (int y1 = 0; y1 < b.Height; y1++)
+                {
+                    double distanceSquared = Math.Pow(x1 - x, 2) / Math.Pow(r1, 2) + Math.Pow(y1 - y, 2) / Math.Pow(r2, 2);
+                    if (distanceSquared <= 1) SetPixel(x1, y1, c);
+                }
+            }
         }
 
-        public void Ellipse(int x, int y, int r1, int r2)
+        public void Ellipse(int x, int y, int r1, int r2, Color c)
         {
-            // dom
+            for (int x1 = 0; x1 < b.Width; x1++)
+            {
+                for (int y1 = 0; y1 < b.Height; y1++)
+                {
+                    double distanceSquared = Math.Pow(x1 - x, 2) / Math.Pow(r1, 2) + Math.Pow(y1 - y, 2) / Math.Pow(r2, 2);
+                    if (distanceSquared <= 1) SetPixel(x1, y1, c);
+                }
+            }
         }
 
         public void WireTriangle(int x1, int y1, int x2 , int y2, int x3, int y3)
