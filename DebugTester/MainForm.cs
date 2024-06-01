@@ -26,6 +26,7 @@ namespace DebugTester
 
                 r.SetPixel(i, y, Color.Azure);
             }
+            r.Line(1, 1, 100, 100);
 
             pbCanvas.Refresh();
         }
