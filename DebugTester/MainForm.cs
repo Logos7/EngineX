@@ -6,6 +6,7 @@ namespace DebugTester
     public partial class MainForm : Form
     {
         Bitmap m_bitmap;
+        Rasterizer r;
 
         public MainForm()
         {
@@ -13,6 +14,8 @@ namespace DebugTester
 
             m_bitmap = new Bitmap(pbCanvas.Width, pbCanvas.Height, PixelFormat.Format32bppRgb);
             pbCanvas.Image = m_bitmap;
+
+            r = new Rasterizer(m_bitmap);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -21,7 +24,7 @@ namespace DebugTester
             {
                 int y = pbCanvas.Height / 2 + (int)(50.0*Math.Sin(0.06*i));
 
-                m_bitmap.SetPixel(i, y, Color.Azure);
+                r.SetPixel(i, y, Color.Azure);
             }
 
             pbCanvas.Refresh();
