@@ -4,12 +4,19 @@
     {
         int cx;
         int cy;
+        bool aa;
 
         Bitmap b;
 
-        Rasterizer(Bitmap bitmap)
+        Rasterizer(Bitmap bitmap, bool antialiasing = false)
         {
             b = bitmap;
+            aa = antialiasing;
+        }
+
+        void SetAntialiasing(bool antialiasing = true)
+        {
+            aa = antialiasing;
         }
 
         void SetPixel(int x, int y, Color c)
@@ -19,7 +26,17 @@
 
         Color GetPixel(int x, int y)
         {
-            return Color.Black;
+            return b.GetPixel(x, y);
+        }
+
+        void HLine(int x, int y, int w)
+        {
+
+        }
+
+        void VLine(int x, int y, int h)
+        {
+
         }
 
         void MoveTo(int x, int y)
