@@ -1,5 +1,5 @@
 using EngineX;
-using System.Drawing.Imaging; 
+using System.Drawing.Imaging;
 
 namespace DebugTester
 {
@@ -20,9 +20,13 @@ namespace DebugTester
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            Color c1 = Color.Aqua, c2 = Color.DarkGreen;
-            r.Ellipse(100, 100, 70, 50, c1);
-            r.WiredEllipse(200, 200, 50, 70, c2);
+            for (int i = 0; i < pbCanvas.Width; i++)
+            {
+                int y = pbCanvas.Height / 2 + (int)(50.0*Math.Sin(0.06*i));
+
+                r.SetPixel(i, y, Color.Azure);
+            }
+
             pbCanvas.Refresh();
         }
     }
