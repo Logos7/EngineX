@@ -48,9 +48,9 @@
             cy = y;
         }
 
-        public void LineTo(int x, int y)
+        public void LineTo(int x, int y, Color c)
         {
-            Line(cx, cy, x, y);
+            Line(cx, cy, x, y, c);
 
             cx = x;
             cy = y;
@@ -187,11 +187,11 @@
             }
         }
 
-        public void WireTriangle(int x1, int y1, int x2 , int y2, int x3, int y3)
+        public void WireTriangle(int x1, int y1, int x2 , int y2, int x3, int y3, Color c)
         {
-            Line(x1, y1, x2, y2);
-            Line(x2, y2, x3, y3);
-            Line(x3, y3, x1, y1);
+            Line(x1, y1, x2, y2, c);
+            Line(x2, y2, x3, y3, c);
+            Line(x3, y3, x1, y1, c);
         }
 
         public void Triangle(int x1, int y1, int x2, int y2, int x3, int y3, Color c)
