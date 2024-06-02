@@ -74,7 +74,7 @@
             // dave
         }
 
-        public void Line(int x1, int y1, int x2, int y2)
+        public void Line(int x1, int y1, int x2, int y2, Color c)
         {
             int d, dx, dy, ai, bi, xi, yi;
             int x = x1, y = y1;
@@ -101,7 +101,7 @@
                 dy = y1 - y2;
             }
             // pierwszy piksel
-            SetPixel(x, y, Color.Red);
+            SetPixel(x, y, c);
             // oś wiodąca OX
             if (dx > dy)
             {
@@ -123,7 +123,7 @@
                         d += bi;
                         x += xi;
                     }
-                    SetPixel(x, y, Color.Red);
+                    SetPixel(x, y, c);
                 }
             }
             // oś wiodąca OY
@@ -147,7 +147,7 @@
                         d += bi;
                         y += yi;
                     }
-                    SetPixel(x, y, Color.Red);
+                    SetPixel(x, y, c);
                 }
             }
             // artur
