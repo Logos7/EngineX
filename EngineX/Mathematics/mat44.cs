@@ -3,11 +3,14 @@
     public class mat44
     {
         public const byte size = 4;
-        public double[] Rows = new double[size];
+        private double[] Rows = new double[size];
 
         public mat44()
         {
-            Rows = [ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ], [ 0, 0, 0, 1 ] ];
+            for (byte i = 0; i < size; i++)
+            {
+                for (byte j = 0; j < size; j++) Rows[i][j] = i == j? 1 : 0;
+            }
         }
 
         public mat44(double[size][size] array)
@@ -36,6 +39,8 @@
             }
             return result;
         }
+
+        public static mat44 operator *(mat44 m, double a) => a * m;
 
         public static mat44 T(mat44 m)
         {
