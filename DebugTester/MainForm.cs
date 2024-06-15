@@ -20,14 +20,7 @@ namespace DebugTester
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < pbCanvas.Width; i++)
-            {
-                int y = pbCanvas.Height / 2 + (int)(50.0*Math.Sin(0.06*i));
-
-                r.SetPixel(i, y, Color.Azure);
-            }
-            //r.Line(1, 1, 100, 100, Color.Azure);
-
+            r.DrawRectangle(10, 10, 210, 210,Color.Blue);
             pbCanvas.Refresh();
         }
     }
