@@ -79,37 +79,91 @@
             return new(array[0], array[1], array[2]);
         }
 
-        public static Matrix44 LookAt(Vector3 position, Vector3 target, Vector3 up)
+        public static Matrix44 LookAt(Vector3 cameraPosition, Vector3 cameraTarget, Vector3 cameraUpVector)
         {
             /*
              * Left-handed look-at matrix
              * https://learn.microsoft.com/en-us/previous-versions/windows/desktop/bb281710(v=vs.85)
             */
-            Vector3 z = (target - position).Normalize();
-            Vector3 x = up.Cross(z).Normalize();
-            Vector3 y = z.Cross(x);
+            Vector3 z = (cameraTarget - cameraPosition).Normalize(), x = cameraUpVector.Cross(z).Normalize(), y = z.Cross(x);
 
             double[,] array = new double[,] {
                 { x.X, y.X, z.X, 0 },
                 { x.Y, y.Y, z.Y, 0 },
                 { x.Z, y.Z, z.Z, 0 },
-                { -x.Dot(position), -y.Dot(position), -z.Dot(position), 1 }
+                { -x.Dot(cameraPosition), -y.Dot(cameraPosition), -z.Dot(cameraPosition), 1 }
             };
 
             return new(array);
         }
 
-        public static Matrix44 Perspective(double width, double height, double near, double far)
+        public static Matrix44 Perspective(double width, double height, double znearPlane, double zfarPlane)
         {
             /*
              * Left-handed perspective projection matrix
              * https://learn.microsoft.com/en-us/previous-versions/windows/desktop/bb281729(v=vs.85)
             */
             double[,] array = new double[,] {
-                { 2*near/width, 0, 0, 0 },
-                { 0, 2*near/height, 0, 0 },
-                { 0, 0, far/(far-near), 1 },
-                { 0, 0, near*far/(near-far), 0 }
+                { 2*znearPlane/width, 0, 0, 0 },
+                { 0, 2*znearPlane/height, 0, 0 },
+                { 0, 0, zfarPlane/(zfarPlane-znearPlane), 1 },
+                { 0, 0, znearPlane*zfarPlane/(znearPlane-zfarPlane), 0 }
+            };
+
+            return new(array);
+        }
+
+        public static Matrix44 PerspectiveFov(double fieldOfViewY, double aspectRatio, double znearPlane, double zfarPlane)
+        {
+            /*
+             * Left-handed perspective projection matrix based on a field of view
+             * https://learn.microsoft.com/en-us/previous-versions/windows/desktop/bb281727(v=vs.85)
+            */
+            double h = 1 / (Math.Tan(fieldOfViewY / 2));
+            double[,] array = new double[,] {
+                { h/aspectRatio, 0, 0, 0 },
+                { 0, h, 0, 0 },
+                { 0, 0, zfarPlane/(zfarPlane-znearPlane), 1 },
+                { 0, 0, -znearPlane*zfarPlane/(zfarPlane-znearPlane), 0 }
+            };
+
+            return new(array);
+        }
+
+        public static Matrix44 RotationX(double angle)
+        {
+            double cos = Math.Cos(angle), sin = Math.Sin(angle);
+            double[,] array = new double[,] {
+                { 1, 0, 0, 0 },
+                { 0, cos, -sin, 0 },
+                { 0, sin, cos, 0 },
+                { 0, 0, 0, 1 }
+            };
+
+            return new(array);
+        }
+
+        public static Matrix44 RotationY(double angle)
+        {
+            double cos = Math.Cos(angle), sin = Math.Sin(angle);
+            double[,] array = new double[,] {
+                { cos, 0, sin, 0 },
+                { 0, 1, 0, 0 },
+                { -sin, 0, cos, 0 },
+                { 0, 0, 0, 1 }
+            };
+
+            return new(array);
+        }
+
+        public static Matrix44 RotationZ(double angle)
+        {
+            double cos = Math.Cos(angle), sin = Math.Sin(angle);
+            double[,] array = new double[,] {
+                { cos, -sin, 0, 0 },
+                { sin, cos, 0, 0 },
+                { 0, 0, 1, 0 },
+                { 0, 0, 0, 1 }
             };
 
             return new(array);
