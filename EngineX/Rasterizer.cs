@@ -25,6 +25,14 @@ namespace EngineX
             b.SetPixel(x, y, c);
         }
 
+        public void SetPixelC(int x, int y, Color c)
+        {
+            if (x >= 0 && y >= 0)
+            {
+                SetPixel(x, y, c);
+            }
+        }
+
         public Color GetPixel(int x, int y)
         {
             return b.GetPixel(x, y);
@@ -164,9 +172,45 @@ namespace EngineX
             // artur
         }
 
-        public void Circle(int x, int y, int r)
+        public void Circle(int x, int y, int r, Color c)
         {
-            // seba
+
+            int ddF = 3 - 2 * r;
+            int x0 = 0;
+            int y0 = r;
+
+            while (x0 < y0)
+            {
+                SetPixelC(x + x0, y + y0, c);
+                SetPixelC(x - x0, y + y0, c);
+                SetPixelC(x + x0, y - y0, c);
+                SetPixelC(x - x0, y - y0, c);
+
+                SetPixelC(x + y0, y + x0, c);
+                SetPixelC(x - y0, y + x0, c);
+                SetPixelC(x + y0, y - x0, c);
+                SetPixelC(x - y0, y - x0, c);
+
+                x0++;
+                if (ddF < 0)
+                {
+                    ddF += 4 * x0 + 6;
+                }
+                else
+                {
+                    ddF += 4 * (x0 - y0) + 10;
+                    y0--;
+                }
+            }
+
+            if (x0 == y0)
+            {
+                SetPixelC(x + x0, y + y0, c);
+                SetPixelC(x - x0, y + y0, c);
+                SetPixelC(x + x0, y - y0, c);
+                SetPixelC(x - x0, y - y0, c);
+
+            }
         }
 
         public void Disc(int x, int y, int r)

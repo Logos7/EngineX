@@ -24,16 +24,24 @@ namespace DebugTester
 
             Random random = new Random();
 
-            int numberOfEllipses = 30;
+            int numberOfTriangles = 5;
 
-            for (int i = 0; i < numberOfEllipses; i++)
+            int minPosition = -100;
+            int maxPositionX = m_bitmap.Width + 100;
+            int maxPositionY = m_bitmap.Height + 100;
+
+            for (int i = 0; i < numberOfTriangles; i++)
             {
-                int x = random.Next(0, m_bitmap.Width);
-                int y = random.Next(0, m_bitmap.Height);
+                int x1 = random.Next(minPosition, maxPositionX);
+                int y1 = random.Next(minPosition, maxPositionY);
+                int x2 = random.Next(minPosition, maxPositionX);
+                int y2 = random.Next(minPosition, maxPositionY);
+                int x3 = random.Next(minPosition, maxPositionX);
+                int y3 = random.Next(minPosition, maxPositionY);
 
                 Color randomColor = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
 
-                r.WiredEllipse(x, y, 15, 10, randomColor);
+                r.Triangle(x1, y1, x2, y2, x3, y3, randomColor);
             }
 
             pbCanvas.Refresh();
