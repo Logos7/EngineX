@@ -20,13 +20,21 @@ namespace DebugTester
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < pbCanvas.Width; i++)
-            {
-                int y = pbCanvas.Height / 2 + (int)(50.0*Math.Sin(0.06*i));
+            r.Clear();
 
-                r.SetPixel(i, y, Color.Azure);
+            Random random = new Random();
+
+            int numberOfEllipses = 30;
+
+            for (int i = 0; i < numberOfEllipses; i++)
+            {
+                int x = random.Next(0, m_bitmap.Width);
+                int y = random.Next(0, m_bitmap.Height);
+
+                Color randomColor = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
+
+                r.WiredEllipse(x, y, 15, 10, randomColor);
             }
-            //r.Line(1, 1, 100, 100, Color.Azure);
 
             pbCanvas.Refresh();
         }
