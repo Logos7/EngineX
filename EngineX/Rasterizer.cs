@@ -288,8 +288,9 @@ namespace EngineX
 
         private void DrawScanline(int x1, int x2, int y, Color c)
         {
+            if (y < 0 || y >= b.Height) return;
             if (x1 > x2) Swap(ref x1, ref x2);
-            for (int x = x1; x <= x2; x++)
+            for (int x = Math.Max(x1, 0); x <= Math.Min(x2, b.Width - 1); x++)
             {
                 SetPixel(x, y, c);
             }
