@@ -1,4 +1,5 @@
-﻿namespace EngineX
+﻿using static System.Math;
+namespace EngineX
 {
     public class Rasterizer
     {
@@ -37,9 +38,12 @@
             }
         }
 
-        public void VLine(int x, int y, int h)
+        public void VLine(int x, int y, int h, Color c)
         {
-
+            for (int i = y; i < y + h; i++)
+            {
+                SetPixel(x, i, c);
+            }
         }
 
         public void MoveTo(int x, int y)
@@ -64,15 +68,22 @@
             }
         }
 
-        public void WiredDrawRectangle(int x1, int y1, int x2, int y2)
+        public void WiredDrawRectangle(int x1, int y1, int x2, int y2, Color c)
+
         {
-            // dave
+            HLine(x1, y1, x2-x1+1, c);
+            VLine(x1, y1, y2 + 75 - y1 + 1, c);
+            HLine(x1, y2 + 75, x2 - x1 + 1, c);
+            VLine(x2, y1, y2+75-y1+1, c);
+          
+            
         }
 
-        public void DrawRectangle(int x1, int y1, int x2, int y2)
+        public void DrawRectangle(int x1, int y1, int x2, int y2, Color c)
         {
-            // dave
-        }
+        for (int i = y1; i <= y2; i++)
+                HLine(x1, y1+i, x2-x1 + 1, c);    
+         }
 
         public void Line(int x1, int y1, int x2, int y2, Color c)
         {
@@ -169,7 +180,7 @@
             {
                 for (int y1 = 0; y1 < b.Height; y1++)
                 {
-                    double distanceSquared = Math.Pow(x1 - x, 2) / Math.Pow(r1, 2) + Math.Pow(y1 - y, 2) / Math.Pow(r2, 2);
+                    double distanceSquared = System.Math.Pow(x1 - x, 2) / System.Math.Pow(r1, 2) + System.Math.Pow(y1 - y, 2) / Math.Pow(r2, 2);
                     if (distanceSquared <= 1) SetPixel(x1, y1, c);
                 }
             }
@@ -181,7 +192,7 @@
             {
                 for (int y1 = 0; y1 < b.Height; y1++)
                 {
-                    double distanceSquared = Math.Pow(x1 - x, 2) / Math.Pow(r1, 2) + Math.Pow(y1 - y, 2) / Math.Pow(r2, 2);
+                    double distanceSquared = System.Math.Pow(x1 - x, 2) / System.Math.Pow(r1, 2) + (System.Math.Pow(y1 - y, 2) / Math.Pow(r2, 2));
                     if (distanceSquared <= 1) SetPixel(x1, y1, c);
                 }
             }
@@ -286,3 +297,4 @@
         }
     }
 }
+
