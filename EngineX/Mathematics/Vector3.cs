@@ -24,5 +24,6 @@
         public double Length() => Math.Sqrt((X * X) + (Y * Y) + (Z * Z));
         public Vector3 Normalize() => this * (1 / Length());
         public Vector3 Cross(Vector3 v) => new(Y * v.Z - Z * v.Y, Z * v.X - X * v.Z, X * v.Y - Y * v.X);
+        public override string ToString() => $"({X}, {Y}, {Z})";
     };
 }

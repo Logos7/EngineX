@@ -168,5 +168,25 @@
 
             return new(array);
         }
+
+        public static Matrix44 Translation(double tx, double ty, double tz)
+        {
+            double[,] array = new double[,] {
+                { 1, 0, tx, 0 },
+                { 0, 1, ty, 0 },
+                { 0, 0, tz, 0 },
+                { 0, 0, 0, 1 }
+            };
+            return new(array);
+        }
+
+        public (double x, double y) Project(Vector3 point, double screenWidth, double screenHeight)
+        {
+            Vector3 projected = this * point;
+            double x = (projected.X + 1) * 0.5f * screenWidth, y = (1 - (projected.Y + 1) * 0.5f) * screenHeight;
+            return (x, y);
+        }
+
+        public override string ToString() => $"{Rows}";
     }
 }
