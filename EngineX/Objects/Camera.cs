@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+﻿using EngineX.Mathematics;
 
 namespace EngineX.Objects
 {
@@ -10,9 +10,11 @@ namespace EngineX.Objects
             near = 50;
         }
 
-        public (double X, double Y) Transform(Vector3 vector)
+        public (int X, int Y) Transform(Vector3 vector)
         {
-            return ((vector.X + near) / vector.Z, (vector.Y + near) / vector.Z);
+            int X = (int)Math.Round((vector.X + near) / vector.Z);
+            int Y = (int)Math.Round((vector.Y + near) / vector.Z);
+            return (X, Y);
         }
     }
 }
