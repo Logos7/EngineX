@@ -4,9 +4,12 @@ namespace EngineX.Objects
 {
     public class Camera : Object3D
     {
+        private readonly int width, height;
         private readonly double near;
         public Camera(string aName) : base(aName)
         {
+            width = 464;
+            height = 320;
             near = 50;
         }
 
@@ -14,7 +17,7 @@ namespace EngineX.Objects
         {
             int X = (int)Math.Round((vector.X + near) / vector.Z);
             int Y = (int)Math.Round((vector.Y + near) / vector.Z);
-            return (X, Y);
+            return (X - (width / 2), Y - (height / 2));
         }
     }
 }
