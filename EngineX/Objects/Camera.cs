@@ -17,7 +17,13 @@ namespace EngineX.Objects
         {
             int X = (int)Math.Round((vector.X + near) / vector.Z);
             int Y = (int)Math.Round((vector.Y + near) / vector.Z);
-            return (X - (width / 2), Y - (height / 2));
+            return (X + (width / 2), Y + (height / 2));
         }
+
+        /*
+         * double x = 250.0 * px / pz, y = 250.0 * py / pz;
+         * Canvas.SetLeft(ellipse, x + 0.5 * world.canvas.ActualWidth);
+         * Canvas.SetTop(ellipse, y + 0.5 * world.canvas.ActualHeight);
+        */
     }
 }
