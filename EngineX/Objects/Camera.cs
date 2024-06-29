@@ -15,8 +15,8 @@ namespace EngineX.Objects
 
         public (int X, int Y) Transform(Vector3 vector)
         {
-            int X = (int)Math.Round((vector.X + near) / vector.Z);
-            int Y = (int)Math.Round((vector.Y + near) / vector.Z);
+            int X = (int)Math.Round((vector.X * near) / vector.Z);
+            int Y = (int)Math.Round((vector.Y * near) / vector.Z);
             return (X + (width / 2), Y + (height / 2));
         }
 
