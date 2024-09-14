@@ -28,55 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.pbCanvas = new System.Windows.Forms.PictureBox();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.mainTimer = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            pbCanvas = new PictureBox();
+            mainTimer = new System.Windows.Forms.Timer(components);
+            button1 = new Button();
+            ((System.ComponentModel.ISupportInitialize)pbCanvas).BeginInit();
+            SuspendLayout();
             // 
             // pbCanvas
             // 
-            this.pbCanvas.Location = new System.Drawing.Point(283, 23);
-            this.pbCanvas.Name = "pbCanvas";
-            this.pbCanvas.Size = new System.Drawing.Size(530, 427);
-            this.pbCanvas.TabIndex = 0;
-            this.pbCanvas.TabStop = false;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(12, 23);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(150, 29);
-            this.btnClear.TabIndex = 1;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            pbCanvas.Location = new Point(248, 17);
+            pbCanvas.Margin = new Padding(3, 2, 3, 2);
+            pbCanvas.Name = "pbCanvas";
+            pbCanvas.Size = new Size(400, 300);
+            pbCanvas.TabIndex = 0;
+            pbCanvas.TabStop = false;
             // 
             // mainTimer
             // 
-            this.mainTimer.Enabled = true;
-            this.mainTimer.Interval = 60;
-            this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
+            mainTimer.Enabled = true;
+            mainTimer.Interval = 40;
+            mainTimer.Tick += mainTimer_Tick;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(27, 17);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(177, 110);
+            button1.TabIndex = 2;
+            button1.Text = "tu możecie dodać jakieś funkcjonalności";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 476);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.pbCanvas);
-            this.Name = "MainForm";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(668, 332);
+            Controls.Add(button1);
+            Controls.Add(pbCanvas);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "MainForm";
+            Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)pbCanvas).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
         private PictureBox pbCanvas;
-        private Button btnClear;
         private System.Windows.Forms.Timer mainTimer;
+        private Button button1;
     }
 }

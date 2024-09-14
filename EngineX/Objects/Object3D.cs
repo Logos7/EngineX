@@ -1,5 +1,6 @@
 ﻿using EngineX.Mathematics;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace EngineX.Objects
 {
@@ -10,17 +11,15 @@ namespace EngineX.Objects
         public bool IsVisible;
 
         public readonly List<Vector3> Vertices;
-        public readonly List<Edge> Edges;
         public readonly List<Triangle> Triangles;
 
-        public Object3D(string aName)
+        public Object3D()
         {
-            Name = aName;
+            Name = "";
             Position = new Vector3();
             IsVisible = true;
 
             Vertices = new List<Vector3>();
-            Edges = new List<Edge>();
             Triangles = new List<Triangle>();
         }
     }
