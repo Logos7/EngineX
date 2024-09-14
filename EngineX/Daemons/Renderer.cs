@@ -13,7 +13,7 @@ namespace EngineX.Daemons
                     (int X, int Y) vertexA = camera.Transform(object3D.Vertices[triangle.a]);
                     (int X, int Y) vertexB = camera.Transform(object3D.Vertices[triangle.b]);
                     (int X, int Y) vertexC = camera.Transform(object3D.Vertices[triangle.c]);
-                    rasterizer.Triangle(vertexA.X, vertexA.Y, vertexB.X, vertexB.Y, vertexC.X, vertexC.Y, Color.Aqua);
+                    rasterizer.Triangle(vertexA.X, vertexA.Y, vertexB.X, vertexB.Y, vertexC.X, vertexC.Y, Color.Azure);
                 }
             }
         }

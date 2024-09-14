@@ -6,24 +6,28 @@ namespace EngineX.Objects
     {
         private readonly int width, height;
         private readonly double near;
+        public Matrix44 mat;
+        public float a;
         public Camera(string aName) : base(aName)
         {
             width = 464;
             height = 320;
-            near = 50;
+            near = 5;
+            mat = new Matrix44();
+            a = 0;
         }
 
         public (int X, int Y) Transform(Vector3 vector)
         {
-            int X = (int)Math.Round((vector.X * near) / vector.Z);
-            int Y = (int)Math.Round((vector.Y * near) / vector.Z);
+            //vector = mat * vector;
+            double ax = vector.X * Math.Sin(a) + vector.Y * Math.Cos(a);
+            double ay = vector.Y * Math.Sin(a) - vector.X * Math.Cos(a);
+            double az = vector.Z;
+
+            int X = (int)Math.Round(ax / (az + near));
+            int Y = (int)Math.Round(ay / (az + near));
+
             return (X + (width / 2), Y + (height / 2));
         }
-
-        /*
-         * double x = 250.0 * px / pz, y = 250.0 * py / pz;
-         * Canvas.SetLeft(ellipse, x + 0.5 * world.canvas.ActualWidth);
-         * Canvas.SetTop(ellipse, y + 0.5 * world.canvas.ActualHeight);
-        */
     }
 }

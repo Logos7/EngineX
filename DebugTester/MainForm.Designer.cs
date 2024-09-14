@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pbCanvas = new System.Windows.Forms.PictureBox();
             this.btnClear = new System.Windows.Forms.Button();
+            this.mainTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,14 +53,20 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // Form1
+            // mainTimer
+            // 
+            this.mainTimer.Enabled = true;
+            this.mainTimer.Interval = 60;
+            this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 476);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.pbCanvas);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();
             this.ResumeLayout(false);
@@ -69,5 +77,6 @@
 
         private PictureBox pbCanvas;
         private Button btnClear;
+        private System.Windows.Forms.Timer mainTimer;
     }
 }
