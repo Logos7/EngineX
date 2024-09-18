@@ -38,33 +38,31 @@ namespace DebugTester
             var obj = new Object3D();
             _scene._objects.Add(obj);
 
-            Random random = new();
+            // Moï¿½esz ustawiï¿½ rï¿½ne kolory dla kaï¿½dej ï¿½ciany, jeï¿½li chcesz
+            Color color1 = Randomness.RandomColor();
+            Color color2 = Randomness.RandomColor();
+            Color color3 = Randomness.RandomColor();
+            Color color4 = Randomness.RandomColor();
 
-            // Mo¿esz ustawiæ ró¿ne kolory dla ka¿dej œciany, jeœli chcesz
-            Color color1 = Color.LightBlue;
-            Color color2 = Color.LightGreen;
-            Color color3 = Color.LightCoral;
-            Color color4 = Color.LightGoldenrodYellow;
+            float a = 50; // Dï¿½ugoï¿½ï¿½ krawï¿½dzi czworoï¿½cianu
 
-            float a = 50; // D³ugoœæ krawêdzi czworoœcianu
+            // Wspï¿½rzï¿½dne wierzchoï¿½kï¿½w czworoï¿½cianu foremnego
+            // Punkty sï¿½ rozmieszczone symetrycznie wokï¿½ ï¿½rodka ukï¿½adu wspï¿½rzï¿½dnych
+            Vector3 v0 = new(0, 0, (float)(a * Math.Sqrt(6) / 3));
+            Vector3 v1 = new(0, (float)(a * Math.Sqrt(3) / 3), 0);
+            Vector3 v2 = new(-a / 2, (float)(-a * Math.Sqrt(3) / 6), 0);
+            Vector3 v3 = new(a / 2, (float)(-a * Math.Sqrt(3) / 6), 0);
 
-            // Wspó³rzêdne wierzcho³ków czworoœcianu foremnego
-            // Punkty s¹ rozmieszczone symetrycznie wokó³ œrodka uk³adu wspó³rzêdnych
-            Vector3 v0 = new Vector3(0, 0, (float)(a * Math.Sqrt(6) / 3));
-            Vector3 v1 = new Vector3(0, (float)(a * Math.Sqrt(3) / 3), 0);
-            Vector3 v2 = new Vector3(-a / 2, (float)(-a * Math.Sqrt(3) / 6), 0);
-            Vector3 v3 = new Vector3(a / 2, (float)(-a * Math.Sqrt(3) / 6), 0);
-
-            // Dodanie wierzcho³ków do obiektu
-            obj.Vertices.Add(v0); // Wierzcho³ek szczytowy
+            // Dodanie wierzchoï¿½kï¿½w do obiektu
+            obj.Vertices.Add(v0); // Wierzchoï¿½ek szczytowy
             obj.Vertices.Add(v1);
             obj.Vertices.Add(v2);
             obj.Vertices.Add(v3);
 
-            // Definicja trójk¹tów (œcian czworoœcianu)
-            obj.Triangles.Add(new Triangle(0, 1, 2, color1)); // Œciana przednia
-            obj.Triangles.Add(new Triangle(0, 2, 3, color2)); // Œciana prawa
-            obj.Triangles.Add(new Triangle(0, 3, 1, color3)); // Œciana lewa
+            // Definicja trï¿½jkï¿½tï¿½w (ï¿½cian czworoï¿½cianu)
+            obj.Triangles.Add(new Triangle(0, 1, 2, color1)); // ï¿½ciana przednia
+            obj.Triangles.Add(new Triangle(0, 2, 3, color2)); // ï¿½ciana prawa
+            obj.Triangles.Add(new Triangle(0, 3, 1, color3)); // ï¿½ciana lewa
             obj.Triangles.Add(new Triangle(1, 3, 2, color4)); // Podstawa
         }
 
@@ -73,28 +71,28 @@ namespace DebugTester
             var obj = new Object3D();
             _scene._objects.Add(obj);
 
-            // Definicja kolorów dla ka¿dej œciany szeœcianu
-            Color color1 = Color.LightBlue;
-            Color color2 = Color.LightGreen;
-            Color color3 = Color.LightCoral;
-            Color color4 = Color.LightGoldenrodYellow;
-            Color color5 = Color.LightPink;
-            Color color6 = Color.LightSkyBlue;
+            // Definicja kolorï¿½w dla kaï¿½dej ï¿½ciany szeï¿½cianu
+            Color color1 = Randomness.RandomColor();
+            Color color2 = Randomness.RandomColor();
+            Color color3 = Randomness.RandomColor();
+            Color color4 = Randomness.RandomColor();
+            Color color5 = Randomness.RandomColor();
+            Color color6 = Randomness.RandomColor();
 
-            float a = 50; // D³ugoœæ krawêdzi szeœcianu
+            float a = 50; // Dï¿½ugoï¿½ï¿½ krawï¿½dzi szeï¿½cianu
 
-            // Wspó³rzêdne wierzcho³ków szeœcianu
-            // Punkty s¹ rozmieszczone symetrycznie wokó³ œrodka uk³adu wspó³rzêdnych
-            Vector3 v0 = new Vector3(-a / 2, -a / 2, -a / 2);
-            Vector3 v1 = new Vector3(a / 2, -a / 2, -a / 2);
-            Vector3 v2 = new Vector3(a / 2, a / 2, -a / 2);
-            Vector3 v3 = new Vector3(-a / 2, a / 2, -a / 2);
-            Vector3 v4 = new Vector3(-a / 2, -a / 2, a / 2);
-            Vector3 v5 = new Vector3(a / 2, -a / 2, a / 2);
-            Vector3 v6 = new Vector3(a / 2, a / 2, a / 2);
-            Vector3 v7 = new Vector3(-a / 2, a / 2, a / 2);
+            // Wspï¿½rzï¿½dne wierzchoï¿½kï¿½w szeï¿½cianu
+            // Punkty sï¿½ rozmieszczone symetrycznie wokï¿½ ï¿½rodka ukï¿½adu wspï¿½rzï¿½dnych
+            Vector3 v0 = new(-a / 2, -a / 2, -a / 2);
+            Vector3 v1 = new(a / 2, -a / 2, -a / 2);
+            Vector3 v2 = new(a / 2, a / 2, -a / 2);
+            Vector3 v3 = new(-a / 2, a / 2, -a / 2);
+            Vector3 v4 = new(-a / 2, -a / 2, a / 2);
+            Vector3 v5 = new(a / 2, -a / 2, a / 2);
+            Vector3 v6 = new(a / 2, a / 2, a / 2);
+            Vector3 v7 = new(-a / 2, a / 2, a / 2);
 
-            // Dodanie wierzcho³ków do obiektu
+            // Dodanie wierzchoï¿½kï¿½w do obiektu
             obj.Vertices.Add(v0); // 0
             obj.Vertices.Add(v1); // 1
             obj.Vertices.Add(v2); // 2
@@ -104,28 +102,28 @@ namespace DebugTester
             obj.Vertices.Add(v6); // 6
             obj.Vertices.Add(v7); // 7
 
-            // Definicja trójk¹tów (œcian szeœcianu)
-            // Œciana przednia (v0, v1, v2, v3)
+            // Definicja trï¿½jkï¿½tï¿½w (ï¿½cian szeï¿½cianu)
+            // ï¿½ciana przednia (v0, v1, v2, v3)
             obj.Triangles.Add(new Triangle(0, 1, 2, color1));
             obj.Triangles.Add(new Triangle(0, 2, 3, color1));
 
-            // Œciana tylna (v4, v5, v6, v7)
+            // ï¿½ciana tylna (v4, v5, v6, v7)
             obj.Triangles.Add(new Triangle(5, 4, 7, color2));
             obj.Triangles.Add(new Triangle(5, 7, 6, color2));
 
-            // Œciana lewa (v0, v3, v7, v4)
+            // ï¿½ciana lewa (v0, v3, v7, v4)
             obj.Triangles.Add(new Triangle(0, 3, 7, color3));
             obj.Triangles.Add(new Triangle(0, 7, 4, color3));
 
-            // Œciana prawa (v1, v5, v6, v2)
+            // ï¿½ciana prawa (v1, v5, v6, v2)
             obj.Triangles.Add(new Triangle(1, 5, 6, color4));
             obj.Triangles.Add(new Triangle(1, 6, 2, color4));
 
-            // Œciana dolna (v0, v4, v5, v1)
+            // ï¿½ciana dolna (v0, v4, v5, v1)
             obj.Triangles.Add(new Triangle(0, 4, 5, color5));
             obj.Triangles.Add(new Triangle(0, 5, 1, color5));
 
-            // Œciana górna (v3, v2, v6, v7)
+            // ï¿½ciana gï¿½rna (v3, v2, v6, v7)
             obj.Triangles.Add(new Triangle(3, 2, 6, color6));
             obj.Triangles.Add(new Triangle(3, 6, 7, color6));
         }
@@ -135,14 +133,14 @@ namespace DebugTester
             var obj = new Object3D();
             _scene._objects.Add(obj);
 
-            // Lista wierzcho³ków dwunastoœcianu foremnego
-            List<Vector3> vertices = new List<Vector3>();
+            // Lista wierzchoï¿½kï¿½w dwunastoï¿½cianu foremnego
+            List<Vector3> vertices = new();
 
-            float phi = (1 + MathF.Sqrt(5)) / 2; // Z³ota liczba
+            float phi = (1 + MathF.Sqrt(5)) / 2; // Zï¿½ota liczba
 
-            float a = 30; // Skalowanie dwunastoœcianu
+            float a = 30; // Skalowanie dwunastoï¿½cianu
 
-            // Wierzcho³ki dwunastoœcianu
+            // Wierzchoï¿½ki dwunastoï¿½cianu
             vertices.Add(new Vector3(-1, -1, -1) * a);
             vertices.Add(new Vector3(-1, -1, 1) * a);
             vertices.Add(new Vector3(-1, 1, -1) * a);
@@ -167,10 +165,10 @@ namespace DebugTester
             vertices.Add(new Vector3(-1 / phi, 0, phi) * a);
             vertices.Add(new Vector3(1 / phi, 0, phi) * a);
 
-            // Dodanie wierzcho³ków do obiektu
+            // Dodanie wierzchoï¿½kï¿½w do obiektu
             obj.Vertices.AddRange(vertices);
 
-            // Definicja œcian (ka¿da jako lista indeksów wierzcho³ków)
+            // Definicja ï¿½cian (kaï¿½da jako lista indeksï¿½w wierzchoï¿½kï¿½w)
             int[][] faces = new int[][]
             {
         new int[] {0, 8, 4, 17, 16},
@@ -187,21 +185,13 @@ namespace DebugTester
         new int[] {2, 6, 7, 11, 10}
             };
 
-            // Przypisanie kolorów do œcian
-            Color[] colors = new Color[]
-            {
-        Color.LightBlue, Color.LightGreen, Color.LightCoral, Color.LightGoldenrodYellow,
-        Color.LightPink, Color.LightSkyBlue, Color.LightSalmon, Color.LightSeaGreen,
-        Color.LightSteelBlue, Color.LightSlateGray, Color.LightYellow, Color.LightCyan
-            };
-
-            // Podzia³ ka¿dej piêciok¹tnej œciany na trójk¹ty
+            // Podziaï¿½ kaï¿½dej piï¿½ciokï¿½tnej ï¿½ciany na trï¿½jkï¿½ty
             for (int i = 0; i < faces.Length; i++)
             {
                 int[] face = faces[i];
-                Color color = colors[i % colors.Length];
+                Color color = Randomness.RandomColor();
 
-                // Dzielimy piêciok¹t na trójk¹ty (przyjmujemy, ¿e wierzcho³ki s¹ u³o¿one wokó³ œrodka)
+                // Dzielimy piï¿½ciokï¿½t na trï¿½jkï¿½ty (przyjmujemy, ï¿½e wierzchoï¿½ki sï¿½ uï¿½oï¿½one wokï¿½ ï¿½rodka)
                 int v0 = face[0];
                 for (int j = 1; j < face.Length - 1; j++)
                 {
@@ -221,9 +211,13 @@ namespace DebugTester
             _globalTime += 2.51f;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void randomizeColors_Click(object sender, EventArgs e)
         {
-            // tu mo¿na coœ dodaæ
+            Object3D obj = _scene._objects[0];
+            foreach (Triangle triangle in obj.Triangles)
+            {
+                triangle.color = Randomness.RandomColor();
+            }
         }
     }
 }

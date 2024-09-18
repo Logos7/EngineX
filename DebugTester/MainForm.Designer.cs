@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             pbCanvas = new PictureBox();
             mainTimer = new System.Windows.Forms.Timer(components);
-            button1 = new Button();
+            randomizeColors = new Button();
             ((System.ComponentModel.ISupportInitialize)pbCanvas).BeginInit();
             SuspendLayout();
             // 
@@ -50,23 +50,23 @@
             mainTimer.Interval = 40;
             mainTimer.Tick += mainTimer_Tick;
             // 
-            // button1
+            // randomizeColors
             // 
-            button1.Location = new Point(27, 17);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(177, 110);
-            button1.TabIndex = 2;
-            button1.Text = "tu możecie dodać jakieś funkcjonalności";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            randomizeColors.Location = new Point(27, 17);
+            randomizeColors.Margin = new Padding(3, 2, 3, 2);
+            randomizeColors.Name = "randomizeColors";
+            randomizeColors.Size = new Size(177, 45);
+            randomizeColors.TabIndex = 2;
+            randomizeColors.Text = "Randomize colors";
+            randomizeColors.UseVisualStyleBackColor = true;
+            randomizeColors.Click += randomizeColors_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(668, 332);
-            Controls.Add(button1);
+            Controls.Add(randomizeColors);
             Controls.Add(pbCanvas);
             Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
@@ -79,6 +79,6 @@
 
         private PictureBox pbCanvas;
         private System.Windows.Forms.Timer mainTimer;
-        private Button button1;
+        private Button randomizeColors;
     }
 }
