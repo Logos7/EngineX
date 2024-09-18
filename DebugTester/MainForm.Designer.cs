@@ -31,7 +31,9 @@
             components = new System.ComponentModel.Container();
             pbCanvas = new PictureBox();
             mainTimer = new System.Windows.Forms.Timer(components);
-            randomizeColors = new Button();
+            RandomizeColors = new Button();
+            RandomScale = new Button();
+            SwitchToOtherObject = new Button();
             ((System.ComponentModel.ISupportInitialize)pbCanvas).BeginInit();
             SuspendLayout();
             // 
@@ -48,25 +50,49 @@
             // 
             mainTimer.Enabled = true;
             mainTimer.Interval = 40;
-            mainTimer.Tick += mainTimer_Tick;
+            mainTimer.Tick += MainTimer_Tick;
             // 
-            // randomizeColors
+            // RandomizeColors
             // 
-            randomizeColors.Location = new Point(27, 17);
-            randomizeColors.Margin = new Padding(3, 2, 3, 2);
-            randomizeColors.Name = "randomizeColors";
-            randomizeColors.Size = new Size(177, 45);
-            randomizeColors.TabIndex = 2;
-            randomizeColors.Text = "Randomize colors";
-            randomizeColors.UseVisualStyleBackColor = true;
-            randomizeColors.Click += randomizeColors_Click;
+            RandomizeColors.Location = new Point(27, 17);
+            RandomizeColors.Margin = new Padding(3, 2, 3, 2);
+            RandomizeColors.Name = "RandomizeColors";
+            RandomizeColors.Size = new Size(177, 45);
+            RandomizeColors.TabIndex = 2;
+            RandomizeColors.Text = "Randomize colors";
+            RandomizeColors.UseVisualStyleBackColor = true;
+            RandomizeColors.Click += RandomizeColors_Click;
+            // 
+            // RandomScale
+            // 
+            RandomScale.Location = new Point(27, 82);
+            RandomScale.Margin = new Padding(3, 2, 3, 2);
+            RandomScale.Name = "RandomScale";
+            RandomScale.Size = new Size(177, 45);
+            RandomScale.TabIndex = 3;
+            RandomScale.Text = "Scale randomly";
+            RandomScale.UseVisualStyleBackColor = true;
+            RandomScale.Click += RandomScale_Click;
+            // 
+            // SwitchToOtherObject
+            // 
+            SwitchToOtherObject.Location = new Point(27, 148);
+            SwitchToOtherObject.Margin = new Padding(3, 2, 3, 2);
+            SwitchToOtherObject.Name = "SwitchToOtherObject";
+            SwitchToOtherObject.Size = new Size(177, 45);
+            SwitchToOtherObject.TabIndex = 4;
+            SwitchToOtherObject.Text = "Switch to other object";
+            SwitchToOtherObject.UseVisualStyleBackColor = true;
+            SwitchToOtherObject.Click += SwitchToOtherObject_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(668, 332);
-            Controls.Add(randomizeColors);
+            Controls.Add(SwitchToOtherObject);
+            Controls.Add(RandomScale);
+            Controls.Add(RandomizeColors);
             Controls.Add(pbCanvas);
             Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
@@ -79,6 +105,8 @@
 
         private PictureBox pbCanvas;
         private System.Windows.Forms.Timer mainTimer;
-        private Button randomizeColors;
+        private Button RandomizeColors;
+        private Button RandomScale;
+        private Button SwitchToOtherObject;
     }
 }

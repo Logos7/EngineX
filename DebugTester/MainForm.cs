@@ -30,7 +30,6 @@ namespace DebugTester
             _renderer = new Renderer(_scene, _rasterizer, _camera);
 
             Initialize4FaceObject();
-            //InitializeCubeObject();
         }
 
         private void Initialize4FaceObject()
@@ -38,31 +37,31 @@ namespace DebugTester
             var obj = new Object3D();
             _scene._objects.Add(obj);
 
-            // Mo�esz ustawi� r�ne kolory dla ka�dej �ciany, je�li chcesz
+            // Mozesz ustawic rozne kolory dla kazdej sciany, jesli chcesz
             Color color1 = Randomness.RandomColor();
             Color color2 = Randomness.RandomColor();
             Color color3 = Randomness.RandomColor();
             Color color4 = Randomness.RandomColor();
 
-            float a = 50; // D�ugo�� kraw�dzi czworo�cianu
+            float a = 50; // Dlugosc krawedzi czworoscianu
 
-            // Wsp�rz�dne wierzcho�k�w czworo�cianu foremnego
-            // Punkty s� rozmieszczone symetrycznie wok� �rodka uk�adu wsp�rz�dnych
+            // Wspolrzedne wierzcholkow czworoscianu foremnego
+            // Punkty sa rozmieszczone symetrycznie wokol srodka ukladu wspolrzednych
             Vector3 v0 = new(0, 0, (float)(a * Math.Sqrt(6) / 3));
             Vector3 v1 = new(0, (float)(a * Math.Sqrt(3) / 3), 0);
             Vector3 v2 = new(-a / 2, (float)(-a * Math.Sqrt(3) / 6), 0);
             Vector3 v3 = new(a / 2, (float)(-a * Math.Sqrt(3) / 6), 0);
 
-            // Dodanie wierzcho�k�w do obiektu
-            obj.Vertices.Add(v0); // Wierzcho�ek szczytowy
+            // Dodanie wierzcholkow do obiektu
+            obj.Vertices.Add(v0); // Wierzcholek szczytowy
             obj.Vertices.Add(v1);
             obj.Vertices.Add(v2);
             obj.Vertices.Add(v3);
 
-            // Definicja tr�jk�t�w (�cian czworo�cianu)
-            obj.Triangles.Add(new Triangle(0, 1, 2, color1)); // �ciana przednia
-            obj.Triangles.Add(new Triangle(0, 2, 3, color2)); // �ciana prawa
-            obj.Triangles.Add(new Triangle(0, 3, 1, color3)); // �ciana lewa
+            // Definicja trojkatow (scian czworoscianu)
+            obj.Triangles.Add(new Triangle(0, 1, 2, color1)); // Sciana przednia
+            obj.Triangles.Add(new Triangle(0, 2, 3, color2)); // Sciana prawa
+            obj.Triangles.Add(new Triangle(0, 3, 1, color3)); // Sciana lewa
             obj.Triangles.Add(new Triangle(1, 3, 2, color4)); // Podstawa
         }
 
@@ -71,7 +70,7 @@ namespace DebugTester
             var obj = new Object3D();
             _scene._objects.Add(obj);
 
-            // Definicja kolor�w dla ka�dej �ciany sze�cianu
+            // Definicja kolorow dla kazdej sciany szescianu
             Color color1 = Randomness.RandomColor();
             Color color2 = Randomness.RandomColor();
             Color color3 = Randomness.RandomColor();
@@ -79,10 +78,10 @@ namespace DebugTester
             Color color5 = Randomness.RandomColor();
             Color color6 = Randomness.RandomColor();
 
-            float a = 50; // D�ugo�� kraw�dzi sze�cianu
+            float a = 50; // Dlugosc krawedzi szescianu
 
-            // Wsp�rz�dne wierzcho�k�w sze�cianu
-            // Punkty s� rozmieszczone symetrycznie wok� �rodka uk�adu wsp�rz�dnych
+            // Wspolrzedne wierzcholkow szeecianu
+            // Punkty sa rozmieszczone symetrycznie wokol srodka ukladu wspolrzednych
             Vector3 v0 = new(-a / 2, -a / 2, -a / 2);
             Vector3 v1 = new(a / 2, -a / 2, -a / 2);
             Vector3 v2 = new(a / 2, a / 2, -a / 2);
@@ -92,7 +91,7 @@ namespace DebugTester
             Vector3 v6 = new(a / 2, a / 2, a / 2);
             Vector3 v7 = new(-a / 2, a / 2, a / 2);
 
-            // Dodanie wierzcho�k�w do obiektu
+            // Dodanie wierzcholkow do obiektu
             obj.Vertices.Add(v0); // 0
             obj.Vertices.Add(v1); // 1
             obj.Vertices.Add(v2); // 2
@@ -102,28 +101,28 @@ namespace DebugTester
             obj.Vertices.Add(v6); // 6
             obj.Vertices.Add(v7); // 7
 
-            // Definicja tr�jk�t�w (�cian sze�cianu)
-            // �ciana przednia (v0, v1, v2, v3)
+            // Definicja trojkatow (scian szescianu)
+            // Sciana przednia (v0, v1, v2, v3)
             obj.Triangles.Add(new Triangle(0, 1, 2, color1));
             obj.Triangles.Add(new Triangle(0, 2, 3, color1));
 
-            // �ciana tylna (v4, v5, v6, v7)
+            // Sciana tylna (v4, v5, v6, v7)
             obj.Triangles.Add(new Triangle(5, 4, 7, color2));
             obj.Triangles.Add(new Triangle(5, 7, 6, color2));
 
-            // �ciana lewa (v0, v3, v7, v4)
+            // Sciana lewa (v0, v3, v7, v4)
             obj.Triangles.Add(new Triangle(0, 3, 7, color3));
             obj.Triangles.Add(new Triangle(0, 7, 4, color3));
 
-            // �ciana prawa (v1, v5, v6, v2)
+            // Sciana prawa (v1, v5, v6, v2)
             obj.Triangles.Add(new Triangle(1, 5, 6, color4));
             obj.Triangles.Add(new Triangle(1, 6, 2, color4));
 
-            // �ciana dolna (v0, v4, v5, v1)
+            // Sciana dolna (v0, v4, v5, v1)
             obj.Triangles.Add(new Triangle(0, 4, 5, color5));
             obj.Triangles.Add(new Triangle(0, 5, 1, color5));
 
-            // �ciana g�rna (v3, v2, v6, v7)
+            // Sciana gorna (v3, v2, v6, v7)
             obj.Triangles.Add(new Triangle(3, 2, 6, color6));
             obj.Triangles.Add(new Triangle(3, 6, 7, color6));
         }
@@ -133,14 +132,14 @@ namespace DebugTester
             var obj = new Object3D();
             _scene._objects.Add(obj);
 
-            // Lista wierzcho�k�w dwunasto�cianu foremnego
+            // Lista wierzcholkow dwunastoscianu foremnego
             List<Vector3> vertices = new();
 
-            float phi = (1 + MathF.Sqrt(5)) / 2; // Z�ota liczba
+            float phi = (1 + MathF.Sqrt(5)) / 2; // Zlota liczba
 
-            float a = 30; // Skalowanie dwunasto�cianu
+            float a = 30; // Skalowanie dwunastoscianu
 
-            // Wierzcho�ki dwunasto�cianu
+            // Wierzcholki dwunastoscianu
             vertices.Add(new Vector3(-1, -1, -1) * a);
             vertices.Add(new Vector3(-1, -1, 1) * a);
             vertices.Add(new Vector3(-1, 1, -1) * a);
@@ -165,10 +164,10 @@ namespace DebugTester
             vertices.Add(new Vector3(-1 / phi, 0, phi) * a);
             vertices.Add(new Vector3(1 / phi, 0, phi) * a);
 
-            // Dodanie wierzcho�k�w do obiektu
+            // Dodanie wierzcholkow do obiektu
             obj.Vertices.AddRange(vertices);
 
-            // Definicja �cian (ka�da jako lista indeks�w wierzcho�k�w)
+            // Definicja scian (kazda jako lista indeksow wierzcholkow)
             int[][] faces = new int[][]
             {
         new int[] {0, 8, 4, 17, 16},
@@ -185,13 +184,13 @@ namespace DebugTester
         new int[] {2, 6, 7, 11, 10}
             };
 
-            // Podzia� ka�dej pi�ciok�tnej �ciany na tr�jk�ty
+            // Podzial kazdej pieciokatnej sciany na trojkaty
             for (int i = 0; i < faces.Length; i++)
             {
                 int[] face = faces[i];
                 Color color = Randomness.RandomColor();
 
-                // Dzielimy pi�ciok�t na tr�jk�ty (przyjmujemy, �e wierzcho�ki s� u�o�one wok� �rodka)
+                // Dzielimy pieciokat na trojkaty (przyjmujemy, ze wierzcholki sa ulozone wokol srodka)
                 int v0 = face[0];
                 for (int j = 1; j < face.Length - 1; j++)
                 {
@@ -203,7 +202,7 @@ namespace DebugTester
             }
         }
 
-        private void mainTimer_Tick(object sender, EventArgs e)
+        private void MainTimer_Tick(object sender, EventArgs e)
         {
             _renderer.Render(_globalTime);
             pbCanvas.Refresh();
@@ -211,13 +210,32 @@ namespace DebugTester
             _globalTime += 2.51f;
         }
 
-        private void randomizeColors_Click(object sender, EventArgs e)
+        private void RandomizeColors_Click(object sender, EventArgs e)
         {
             Object3D obj = _scene._objects[0];
             foreach (Triangle triangle in obj.Triangles)
             {
                 triangle.color = Randomness.RandomColor();
             }
+        }
+
+        private void RandomScale_Click(object sender, EventArgs e)
+        {
+            Object3D obj = _scene._objects[0];
+            float randomScale = Randomness.RandomFloat(0.75f, 1.25f);
+
+            for (ushort i = 0; i < obj.Vertices.Count; i++)
+            {
+                obj.Vertices[i] *= randomScale;
+            }
+        }
+
+        private void SwitchToOtherObject_Click(object sender, EventArgs e)
+        {
+            byte NumberOfVertices = (byte)_scene._objects[0].Vertices.Count;
+            _scene._objects.Clear();
+            if (NumberOfVertices == 4) InitializeCubeObject();
+            else Initialize4FaceObject();
         }
     }
 }
