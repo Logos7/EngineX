@@ -11,5 +11,11 @@
         }
 
         public static float RandomFloat(float a, float b) => (float) ((r.NextDouble() * (b - a)) + a);
+
+        public static T Choose<T>(List<T> list)
+        {
+            int index = r.Next(list.Count);
+            return list[index];
+        }
     }
 }

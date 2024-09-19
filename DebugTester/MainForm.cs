@@ -29,12 +29,15 @@ namespace DebugTester
             _rasterizer = new Rasterizer(_bitmap);
             _renderer = new Renderer(_scene, _rasterizer, _camera);
 
-            Initialize4FaceObject();
+            SelectRandomShape_Click(this, EventArgs.Empty);
         }
 
-        private void Initialize4FaceObject()
+        private void InitializeTetrahedron()
         {
-            var obj = new Object3D();
+            var obj = new Object3D
+            {
+                Name = "Tetrahedron"
+            };
             _scene._objects.Add(obj);
 
             // Mozesz ustawic rozne kolory dla kazdej sciany, jesli chcesz
@@ -65,9 +68,12 @@ namespace DebugTester
             obj.Triangles.Add(new Triangle(1, 3, 2, color4)); // Podstawa
         }
 
-        private void InitializeCubeObject()
+        private void InitializeCube()
         {
-            var obj = new Object3D();
+            var obj = new Object3D
+            {
+                Name = "Cube"
+            };
             _scene._objects.Add(obj);
 
             // Definicja kolorow dla kazdej sciany szescianu
@@ -127,9 +133,12 @@ namespace DebugTester
             obj.Triangles.Add(new Triangle(3, 6, 7, color6));
         }
 
-        private void Initialize12FaceObject()
+        private void InitializeDodecahedron()
         {
-            var obj = new Object3D();
+            var obj = new Object3D
+            {
+                Name = "Dodecahedron"
+            };
             _scene._objects.Add(obj);
 
             // Lista wierzcholkow dwunastoscianu foremnego
@@ -230,12 +239,25 @@ namespace DebugTester
             }
         }
 
-        private void SwitchToOtherObject_Click(object sender, EventArgs e)
+        private void SelectRandomShape_Click(object sender, EventArgs e)
         {
-            byte NumberOfVertices = (byte)_scene._objects[0].Vertices.Count;
-            _scene._objects.Clear();
-            if (NumberOfVertices == 4) InitializeCubeObject();
-            else Initialize4FaceObject();
+            Dictionary<string, Action> AllShapes = new()
+            {
+                { "Tetrahedron", InitializeTetrahedron },
+                { "Cube",  InitializeCube },
+                { "Dodecahedron", InitializeDodecahedron }
+            };
+
+            if (_scene._objects.Count == 1)
+            {
+                string PreviousShape = _scene._objects[0].Name;
+                AllShapes.Remove(PreviousShape);
+                _scene._objects.Clear();
+            }
+            
+            List<string> Keys = AllShapes.Keys.ToList();
+            string RandomShape = Randomness.Choose(Keys);
+            AllShapes.GetValueOrDefault(RandomShape)?.Invoke();
         }
     }
 }

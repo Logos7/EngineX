@@ -33,7 +33,7 @@
             mainTimer = new System.Windows.Forms.Timer(components);
             RandomizeColors = new Button();
             RandomScale = new Button();
-            SwitchToOtherObject = new Button();
+            SelectRandomShape = new Button();
             ((System.ComponentModel.ISupportInitialize)pbCanvas).BeginInit();
             SuspendLayout();
             // 
@@ -74,23 +74,23 @@
             RandomScale.UseVisualStyleBackColor = true;
             RandomScale.Click += RandomScale_Click;
             // 
-            // SwitchToOtherObject
+            // SelectRandomShape
             // 
-            SwitchToOtherObject.Location = new Point(27, 148);
-            SwitchToOtherObject.Margin = new Padding(3, 2, 3, 2);
-            SwitchToOtherObject.Name = "SwitchToOtherObject";
-            SwitchToOtherObject.Size = new Size(177, 45);
-            SwitchToOtherObject.TabIndex = 4;
-            SwitchToOtherObject.Text = "Switch to other object";
-            SwitchToOtherObject.UseVisualStyleBackColor = true;
-            SwitchToOtherObject.Click += SwitchToOtherObject_Click;
+            SelectRandomShape.Location = new Point(27, 148);
+            SelectRandomShape.Margin = new Padding(3, 2, 3, 2);
+            SelectRandomShape.Name = "SelectRandomShape";
+            SelectRandomShape.Size = new Size(177, 45);
+            SelectRandomShape.TabIndex = 4;
+            SelectRandomShape.Text = "Select random shape";
+            SelectRandomShape.UseVisualStyleBackColor = true;
+            SelectRandomShape.Click += SelectRandomShape_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(668, 332);
-            Controls.Add(SwitchToOtherObject);
+            Controls.Add(SelectRandomShape);
             Controls.Add(RandomScale);
             Controls.Add(RandomizeColors);
             Controls.Add(pbCanvas);
@@ -107,6 +107,6 @@
         private System.Windows.Forms.Timer mainTimer;
         private Button RandomizeColors;
         private Button RandomScale;
-        private Button SwitchToOtherObject;
+        private Button SelectRandomShape;
     }
 }
