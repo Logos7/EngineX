@@ -21,7 +21,7 @@ namespace DebugTester
             InitializeComponent();
 
             _globalTime = 0;
-            _bitmap = new Bitmap(pbCanvas.Width, pbCanvas.Height, PixelFormat.Format32bppRgb);
+            _bitmap = new Bitmap(pbCanvas.Width, pbCanvas.Height, PixelFormat.Format64bppArgb);
             pbCanvas.Image = _bitmap;
             _scene = new Scene3D();
             float aspectRatio = (float)_bitmap.Width / _bitmap.Height;
@@ -40,7 +40,6 @@ namespace DebugTester
             };
             _scene._objects.Add(obj);
 
-            // Mozesz ustawic rozne kolory dla kazdej sciany, jesli chcesz
             Color color1 = Randomness.RandomColor();
             Color color2 = Randomness.RandomColor();
             Color color3 = Randomness.RandomColor();
@@ -211,6 +210,71 @@ namespace DebugTester
             }
         }
 
+        private void InitializeRectangularCuboid()
+        {
+            var obj = new Object3D
+            {
+                Name = "Rectangular cuboid"
+            };
+            _scene._objects.Add(obj);
+
+            // Definicja kolorow dla kazdej sciany szescianu
+            Color color1 = Randomness.RandomColor();
+            Color color2 = Randomness.RandomColor();
+            Color color3 = Randomness.RandomColor();
+            Color color4 = Randomness.RandomColor();
+            Color color5 = Randomness.RandomColor();
+            Color color6 = Randomness.RandomColor();
+
+            float a = 50, b = 20; // Dlugosc krawedzi prostopadloscianu
+
+            // Wspolrzedne wierzcholkow prostopadloscianu
+            // Punkty sa rozmieszczone symetrycznie wokol srodka ukladu wspolrzednych
+            Vector3 v0 = new(-b / 2, -a / 2, -a / 2);
+            Vector3 v1 = new(-b / 2, -a / 2, a / 2);
+            Vector3 v2 = new(b / 2, -a / 2, a / 2);
+            Vector3 v3 = new(b / 2, -a / 2, -a / 2);
+            Vector3 v4 = new(-b / 2, a / 2, -a / 2);
+            Vector3 v5 = new(-b / 2, a / 2, a / 2);
+            Vector3 v6 = new(b / 2, a / 2, a / 2);
+            Vector3 v7 = new(b / 2, a / 2, -a / 2);
+
+            // Dodanie wierzcholkow do obiektu
+            obj.Vertices.Add(v0); // 0
+            obj.Vertices.Add(v1); // 1
+            obj.Vertices.Add(v2); // 2
+            obj.Vertices.Add(v3); // 3
+            obj.Vertices.Add(v4); // 4
+            obj.Vertices.Add(v5); // 5
+            obj.Vertices.Add(v6); // 6
+            obj.Vertices.Add(v7); // 7
+
+            // Definicja trojkatow (scian prostopadloscianu)
+            // Sciana przednia (v0, v1, v2, v3)
+            obj.Triangles.Add(new Triangle(0, 1, 2, color1));
+            obj.Triangles.Add(new Triangle(0, 2, 3, color1));
+
+            // Sciana tylna (v4, v5, v6, v7)
+            obj.Triangles.Add(new Triangle(5, 4, 7, color2));
+            obj.Triangles.Add(new Triangle(5, 7, 6, color2));
+
+            // Sciana lewa (v0, v3, v7, v4)
+            obj.Triangles.Add(new Triangle(0, 3, 7, color3));
+            obj.Triangles.Add(new Triangle(0, 7, 4, color3));
+
+            // Sciana prawa (v1, v5, v6, v2)
+            obj.Triangles.Add(new Triangle(1, 5, 6, color4));
+            obj.Triangles.Add(new Triangle(1, 6, 2, color4));
+
+            // Sciana dolna (v0, v4, v5, v1)
+            obj.Triangles.Add(new Triangle(0, 4, 5, color5));
+            obj.Triangles.Add(new Triangle(0, 5, 1, color5));
+
+            // Sciana gorna (v3, v2, v6, v7)
+            obj.Triangles.Add(new Triangle(3, 2, 6, color6));
+            obj.Triangles.Add(new Triangle(3, 6, 7, color6));
+        }
+
         private void MainTimer_Tick(object sender, EventArgs e)
         {
             _renderer.Render(_globalTime);
@@ -245,7 +309,8 @@ namespace DebugTester
             {
                 { "Tetrahedron", InitializeTetrahedron },
                 { "Cube",  InitializeCube },
-                { "Dodecahedron", InitializeDodecahedron }
+                { "Dodecahedron", InitializeDodecahedron },
+                { "Rectangular cuboid", InitializeRectangularCuboid }
             };
 
             if (_scene._objects.Count == 1)
