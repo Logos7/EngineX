@@ -34,6 +34,7 @@
             RandomizeColors = new Button();
             RandomScale = new Button();
             SelectRandomShape = new Button();
+            DeformShape = new Button();
             ((System.ComponentModel.ISupportInitialize)pbCanvas).BeginInit();
             SuspendLayout();
             // 
@@ -85,11 +86,23 @@
             SelectRandomShape.UseVisualStyleBackColor = true;
             SelectRandomShape.Click += SelectRandomShape_Click;
             // 
+            // DeformShape
+            // 
+            DeformShape.Location = new Point(27, 217);
+            DeformShape.Margin = new Padding(3, 2, 3, 2);
+            DeformShape.Name = "DeformShape";
+            DeformShape.Size = new Size(177, 45);
+            DeformShape.TabIndex = 5;
+            DeformShape.Text = "Deform shape";
+            DeformShape.UseVisualStyleBackColor = true;
+            DeformShape.Click += DeformShape_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(668, 332);
+            Controls.Add(DeformShape);
             Controls.Add(SelectRandomShape);
             Controls.Add(RandomScale);
             Controls.Add(RandomizeColors);
@@ -108,5 +121,6 @@
         private Button RandomizeColors;
         private Button RandomScale;
         private Button SelectRandomShape;
+        private Button DeformShape;
     }
 }

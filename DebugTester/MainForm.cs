@@ -319,10 +319,24 @@ namespace DebugTester
                 AllShapes.Remove(PreviousShape);
                 _scene._objects.Clear();
             }
-            
+
             List<string> Keys = AllShapes.Keys.ToList();
             string RandomShape = Randomness.Choose(Keys);
             AllShapes.GetValueOrDefault(RandomShape)?.Invoke();
+        }
+
+        private void DeformShape_Click(object sender, EventArgs e)
+        {
+            Object3D obj = _scene._objects[0];
+
+            for (ushort i = 0; i < obj.Vertices.Count; i++)
+            {
+                Vector3 vector = obj.Vertices[i];
+                vector.X += Randomness.RandomFloat(-5f, 5f);
+                vector.Y += Randomness.RandomFloat(-5f, 5f);
+                vector.Z += Randomness.RandomFloat(-5f, 5f);
+                obj.Vertices[i] = vector;
+            }
         }
     }
 }
